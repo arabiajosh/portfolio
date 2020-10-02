@@ -19,6 +19,6 @@ The contents of this portfolio are sorted by language used, and represent some o
   
   - A functional character by character [autocomplete application](java/) (`Java`), that tracks user preferences and suggests the words you use most frequently. This can be run with `java ac_test` from the java directory.
 
+  - A CLI tool for performing [Association Rule Mining](python) (`Python`). The tool is one part of a larger pipeline to process and analyze transaction data.
+
   - Source code for an open source Magnavox Odyssey game called [Tanhauser Gate](c++/Tanhauser-Gate) (`C++`). Created as part of the OdysseyNow project, it is a simple AI game master for the world's first home gaming console.
-  
-  - Screenshots of an ongoing [procedural terrain modeling project](unity/) (`Unity`), which uses psuedorandom noise generation and runtime texture generation to efficiently render worlds.
