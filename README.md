@@ -12,6 +12,6 @@ The contents of this portfolio are sorted by language used, and represent some o
   
   - Sampled [teaching materials](java) (`Java`) from my time as a UTA at the University of Pittsburgh, created in conjunction with learning material from the CS0445 Data Structures course.
 
-  - Source code for an open source Magnavox Odyssey game called [Tanhauser Gate](c++/Tanhauser-Gate) (`C++`). Created as part of the OdysseyNow project, it is a simple AI game master for the world's first home gaming console.
+  - Source code for an open source Magnavox Odyssey game called [Tanhauser Gate](cpp/Tanhauser-Gate) (`C++`). Created as part of the OdysseyNow project, it is a simple AI game master for the world's first home gaming console.
 
-  - Source code for a portable, [Arduino based weather station](c++/Arduino-Weather-Station) (`C++`), created in association with the University of Pittsburgh's own Vibrant Media Lab. Also included are unit tests for the proof of concept of the project's second iteration.
+  - Source code for a portable, [Arduino based weather station](cpp/Arduino-Weather-Station) (`C++`), created in association with the University of Pittsburgh's own Vibrant Media Lab. Also included are unit tests for the proof of concept of the project's second iteration.
