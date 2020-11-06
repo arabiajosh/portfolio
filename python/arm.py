@@ -30,8 +30,8 @@ def write_data(dest_file: str, output):
 
 
 def get_supp(item, context):
-    """Calculates the support percentage of a given element within the set of records defined
-        in context. The return in bounded on [0.0, 1.0]"""
+    """Calculates the support percentage supp of a given element within the set of records 
+        defined in context. The return is a decimal on the range [0.0, 1.0]"""
     count = 0
     for elem in context:
         if all(i in elem for i in item):
@@ -41,7 +41,7 @@ def get_supp(item, context):
 
 def to_rules(items):
     """Partitions the given item set S into (A,B), where each pair represents the rule A => B
-        and A U B = S. A and B are disparate sets."""
+        and A U B = S. A and B are disparate sets of one or more elements in the context."""
     i_set = set(items)
     ret = []
     for i in range(1, len(items)):
@@ -90,6 +90,11 @@ while len(new_lang) >= card:
 
 output = []
 
+# The outuput consists of two steps. First, all of the verified frequent
+# itemsets are ordered and cleaned, then the same process is repeated for
+# all the verified association rules
+
+# Define a transformation table to help clean up the output
 tr_table = {ord('['): '', ord(']'): '', ord('\''): '', ord('\"'): '', ord(' '): ''}
 # Expected output is sorted by length of set, then lexicographical order
 for i_set in sorted(list(vfi.keys()), key=lambda x: (len(x), str(x))):
@@ -114,12 +119,14 @@ for candidate in cr:
             vr[rule] = (supp, conf)
 
 tr_table = {ord('['): '', ord(']'): '', ord('\''): '', ord('\"'): '', ord(' '): ''}
+# The sort here is done first by size of the rule (where size is the total number of elements,
+# and then lexicographically by LHS then by RHS
 for rule in sorted(list(vr.keys()), key=lambda x: (len(x[0]) + len(x[1]), x[0], x[1])):
-    # print(rule)
     a_string = str(sorted(list(rule[0]))).translate(tr_table)
     b_string = str(sorted(list(rule[1]))).translate(tr_table)
     supp = vr[rule][0]
     conf = vr[rule][1]
     output.append('R,%.4f,%.4f,%s,\'=>\',%s' % (supp, conf, a_string, b_string))
 
+# Pass the data on to the next step of the pipeline
 write_data(args.dest_file, output)
